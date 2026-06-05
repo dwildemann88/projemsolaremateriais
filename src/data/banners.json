@@ -1,0 +1,23 @@
+[
+  {
+    "title": "Monte sua lista sem perder tempo.",
+    "subtitle": "Escolha os materiais, envie pelo WhatsApp e continue com a loja.",
+    "badge": "Atendimento Projem",
+    "buttonText": "Ver materiais",
+    "image": "assets/img/banners/1.1.png"
+  },
+  {
+    "title": "Peça orçamento antes de sair de casa.",
+    "subtitle": "A equipe recebe sua lista e agiliza o atendimento na loja.",
+    "badge": "Loja de materiais",
+    "buttonText": "Montar lista",
+    "image": "assets/img/banners/2.2.png"
+  },
+  {
+    "title": "Sua compra também pode valer.",
+    "subtitle": "Confira as condições da campanha Hexa com a Projem no atendimento.",
+    "badge": "Hexa com a Projem",
+    "buttonText": "Participar comprando",
+    "image": "assets/img/banners/4.4.png"
+  }
+]

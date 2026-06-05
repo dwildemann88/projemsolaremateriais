@@ -1,0 +1,393 @@
+[
+  {
+    "id": "entrada-cpfl-monofasica-63a-a4-baixo",
+    "name": "ENTRADA CPFL 1 MONOF 63A ( A4 ) P/BAIXO (M)",
+    "category": "Entrada de energia",
+    "group": "eletrica",
+    "description": "Entrada padrão CPFL monofásica 63A para instalação elétrica.",
+    "price": 1350.00,
+    "image": "assets/img/products/entrada-energia.png",
+    "tags": [
+      "entrada",
+      "cpfl",
+      "monofásica",
+      "63a",
+      "elétrica"
+    ]
+  },
+  {
+    "id": "entrada-cpfl-bifasica-63a-b3-baixo",
+    "name": "ENTRADA CPFL 01 BIFASICA 63A ( B3 ) P/BAIXO",
+    "category": "Entrada de energia",
+    "group": "eletrica",
+    "description": "Entrada padrão CPFL bifásica 63A para ligação de energia.",
+    "price": 1700.00,
+    "image": "assets/img/products/entrada-energia.png",
+    "tags": [
+      "entrada",
+      "cpfl",
+      "bifásica",
+      "63a",
+      "elétrica"
+    ]
+  },
+  {
+    "id": "mureta-concreto-padrao-corsan-universal",
+    "name": "MURETA CONCRETO PADRÃO CORSAN UNIV.",
+    "category": "Hidráulica",
+    "group": "hidraulica",
+    "description": "Mureta de concreto padrão Corsan universal para instalação hidráulica.",
+    "price": 730.00,
+    "image": "assets/img/products/mureta-concreto.png",
+    "tags": [
+      "mureta",
+      "concreto",
+      "corsan",
+      "hidráulica"
+    ]
+  },
+  {
+    "id": "lampada-bulbo-led-09w-6500k-cristallux",
+    "name": "LAMPADA BULBO LED 09W 6500K CRISTALLUX",
+    "category": "Iluminação",
+    "group": "eletrica",
+    "description": "Lâmpada bulbo LED 9W 6500K para iluminação econômica.",
+    "price": 1.99,
+    "image": "assets/img/products/lampada-led.png",
+    "tags": [
+      "lâmpada",
+      "led",
+      "9w",
+      "6500k",
+      "cristallux"
+    ]
+  },
+  {
+    "id": "lampada-bulbo-led-09w-6500k-cristallux",
+    "name": "LAMPADA BULBO LED 30W 6500K CRISTALLUX",
+    "category": "Iluminação",
+    "group": "eletrica",
+    "description": "Lâmpada bulbo LED 9W 6500K para iluminação econômica.",
+    "price": 7.99,
+    "image": "assets/img/products/lampada-led.png",
+    "tags": [
+      "lâmpada",
+      "led",
+      "30w",
+      "6500k",
+      "cristallux"
+    ],
+    "isPromotion": true
+    
+  },
+  {
+    "id": "refletor-led-g-viena-100w-6500k-ip66-cristallux",
+    "name": "REFLETOR LED G.VIENA 100W 6500K IP66 CRISTALLUX (G2)",
+    "category": "Iluminação",
+    "group": "eletrica",
+    "description": "Refletor LED 100W 6500K IP66 para áreas externas e iluminação potente.",
+    "price": 49.90,
+    "image": "assets/img/products/refletor-led.png",
+    "tags": [
+      "refletor",
+      "led",
+      "100w",
+      "6500k",
+      "ip66",
+      "cristallux"
+    ]
+  },
+  {
+    "id": "refletor-led-g-viena-400w-6500k-ip66-cristallux",
+    "name": "REFLETOR LED G.VIENA 400W 6500K IP66 CRISTALLUX (G2)",
+    "category": "Iluminação",
+    "group": "eletrica",
+    "description": "Refletor LED 400W 6500K IP66 para alta iluminação em áreas amplas.",
+    "price": 189.90,
+    "image": "assets/img/products/refletor-led.png",
+    "tags": [
+      "refletor",
+      "led",
+      "400w",
+      "6500k",
+      "ip66",
+      "cristallux"
+    ]
+  },
+  {
+    "id": "ducha-lorenzetti-loren-shower-7500w",
+    "name": "DUCHA -LORENZETTI- LOREN SHOWER ELETR. 7500W",
+    "category": "Elétrica e banho",
+    "group": "dia_a_dia",
+    "description": "Ducha elétrica Lorenzetti Loren Shower 7500W para banho.",
+    "price": 149.90,
+    "image": "assets/img/products/chuveiro.png",
+    "tags": [
+      "ducha",
+      "chuveiro",
+      "lorenzetti",
+      "7500w",
+      "banho"
+    ]
+  },
+  {
+    "id": "ducha-zagonel-loren-shower-7700W",
+    "name": "DUCHA -ZAGONEL- ZAG. SHOWER ELETR. 7700W",
+    "category": "Elétrica e banho",
+    "group": "dia_a_dia",
+    "description": "Ducha elétrica Zagonel Loren Shower 7700W para banho.",
+    "price": 139.90,
+    "image": "assets/img/products/chuveiro.png",
+    "tags": [
+      "ducha",
+      "chuveiro",
+      "zagonel",
+      "7700W",
+      "banho"
+    ],
+    "isPromotion": true
+  },
+  {
+    "id": "ducha-zagonel-loren-shower-5200w-ss ",
+    "name": "DUCHA -MULT. ZAGONEL- ZAG. SHOWER ELETR. 5200w. 3 TEMP. ",
+    "category": "Elétrica e banho",
+    "group": "dia_a_dia",
+    "description": "Ducha elétrica Zagonel Loren Shower 5200w  para banho.",
+    "price": 49.90,
+    "image": "assets/img/products/chuveiro.png",
+    "tags": [
+      "ducha",
+      "chuveiro",
+      "zagonel",
+      "5200w",
+      "banho"
+    ],
+    "isPromotion": true
+  },
+  {
+    "id": "torneira-eletrica-zagonel-luna-4t-5500w-br",
+    "name": "TORNEIRA ELETRICA -ZAGONEL- LUNA 4T 5500W BR",
+    "category": "Elétrica e banho",
+    "group": "dia_a_dia",
+    "description": "Torneira elétrica Zagonel Luna 4T 5500W branca.",
+    "price": 199.90,
+    "image": "assets/img/products/torneira-eletrica.png",
+    "tags": [
+      "torneira",
+      "elétrica",
+      "zagonel",
+      "5500w",
+      "cozinha"
+    ]
+  },
+  {
+    "id": "torneira-eletrica-zagonel-lumen-4t-5500w-br",
+    "name": "TORNEIRA ELETRICA -ZAGONEL- LUMEN 4T 5500W BR",
+    "category": "Elétrica e banho",
+    "group": "dia_a_dia",
+    "description": "Torneira elétrica Zagonel Lumen 4T 5500W branca.",
+    "price": 249.90,
+    "image": "assets/img/products/torneira-eletrica.png",
+    "tags": [
+      "torneira",
+      "elétrica",
+      "zagonel",
+      "5500w",
+      "cozinha"
+    ],
+    "isPromotion": true
+  },
+  {
+    "id": "aquecedor-eletrica-fame-220v-24A-5400w-br",
+    "name": "AQUECEDOR ELETRICO -FAME- 220V 5400W BR",
+    "category": "Elétrica e banho",
+    "group": "dia_a_dia",
+    "description": "Aquecedor elétrico Fame 220v 5400W branco.",
+    "price": 199.90,
+    "image": "assets/img/products/torneira-eletrica.png",
+    "tags": [
+      "aquecedor",
+      "elétrica",
+      "fame",
+      "5400w",
+      "cozinha"
+    ],
+    "isPromotion": true
+  },
+  {
+    "id": "piscina-cloro-balde-10kg-hellus-5em1",
+    "name": "PISCINA QBN CLORO BALDE 10KG HELLUS MULTI AÇÃO 5EM1",
+    "category": "Piscina",
+    "group": "dia_a_dia",
+    "description": "Cloro multi ação 5 em 1 para manutenção de piscina.",
+    "price": 239.90,
+    "image": "assets/img/products/piscina-cloro.png",
+    "tags": [
+      "piscina",
+      "cloro",
+      "hellus",
+      "10kg",
+      "limpeza"
+    ]
+  },
+  {
+    "id": "tubo-esgoto-100mm",
+    "name": "TUBO ESGOTO 100MM",
+    "category": "Hidráulica",
+    "group": "hidraulica",
+    "description": "Tubo de esgoto 100mm para instalações hidráulicas.",
+    "price": 15.50,
+    "image": "assets/img/products/cano-pvc.png",
+    "tags": [
+      "tubo",
+      "esgoto",
+      "100mm",
+      "pvc",
+      "hidráulica"
+    ]
+  },
+  {
+    "id": "tubo-soldavel-25mm",
+    "name": "TUBO SOLDAVEL 25MM",
+    "category": "Hidráulica",
+    "group": "hidraulica",
+    "description": "Tubo soldável 25mm para redes hidráulicas.",
+    "price": 4.75,
+    "image": "assets/img/products/cano-pvc-soldavel.png",
+    "tags": [
+      "tubo",
+      "soldável",
+      "25mm",
+      "pvc",
+      "hidráulica"
+    ]
+  },
+  {
+    "id": "alicate-universal-8-1000v-amarela-tramontina",
+    "name": "ALICATE UNIVERSAL 8\" 1000V AMARELA TRAMONTINA",
+    "category": "Ferramentas",
+    "group": "manutencao",
+    "description": "Alicate universal 8 polegadas 1000V Tramontina para uso profissional.",
+    "price": 49.90,
+    "image": "assets/img/products/ferramentas.png",
+    "tags": [
+      "alicate",
+      "tramontina",
+      "1000v",
+      "ferramenta",
+      "elétrica"
+    ]
+  },
+  {
+    "id": "alicate-amperimetro-digital-et-3200-minipa",
+    "name": "TESTE ALICATE AMPERIMETRO DIGITAL ET-3200 MINIPA",
+    "category": "Ferramentas elétricas",
+    "group": "eletrica",
+    "description": "Alicate amperímetro digital Minipa ET-3200 para medições elétricas.",
+    "price": 249.90,
+    "image": "assets/img/products/amperimetro.png",
+    "tags": [
+      "alicate",
+      "amperímetro",
+      "digital",
+      "minipa",
+      "elétrica"
+    ]
+  },
+  {
+    "id": "cabo-flexivel-25mm-azul",
+    "name": "CABO FLEXIVEL 2,5MM AZUL",
+    "category": "Cabos e fios",
+    "group": "eletrica",
+    "description": "Cabo flexível 2,5mm azul para instalações elétricas.",
+    "price": 2.89,
+    "image": "assets/img/products/cabo-eletrico-azul.png",
+    "tags": [
+      "cabo",
+      "flexível",
+      "2,5mm",
+      "azul",
+      "elétrica"
+    ]
+  },
+  {
+    "id": "cabo-aluminio-duplex-2x10mm",
+    "name": "CABO ALUMINIO DUPLEX 2X10,0MM",
+    "category": "Cabos e fios",
+    "group": "eletrica",
+    "description": "Cabo de alumínio duplex 2x10,0mm para instalações elétricas.",
+    "price": 3.99,
+    "image": "assets/img/products/cabo-eletrico-duplex.png",
+    "tags": [
+      "cabo",
+      "alumínio",
+      "duplex",
+      "2x10mm",
+      "elétrica"
+    ]
+  },
+  {
+    "id": "furadeira-impacto-razi-38-500w-220v",
+    "name": "PROMO RAZI FURADEIRA DE IMPACTO 3/8\" 500W 220V",
+    "category": "Ferramentas elétricas",
+    "group": "manutencao",
+    "description": "Furadeira de impacto Razi 3/8 polegadas 500W 220V.",
+    "price": 169.90,
+    "image": "assets/img/products/furadeira-razi.png",
+    "tags": [
+      "furadeira",
+      "impacto",
+      "razi",
+      "500w",
+      "220v"
+    ]
+  },
+  {
+    "id": "selante-pu-40-tubo-380g-cinza-autofix",
+    "name": "SELANTE PU 40 TUBO 380G CZ AUTOFIX",
+    "category": "Acabamento",
+    "group": "obra",
+    "description": "Selante PU 40 cinza Autofix 380g para vedação e acabamento.",
+    "price": 18.60,
+    "image": "assets/img/products/selante.png",
+    "tags": [
+      "selante",
+      "pu40",
+      "vedação",
+      "autofix",
+      "acabamento"
+    ]
+  },
+  {
+    "id": "botina-preta-n40-elast-sola-pu-ca-17015",
+    "name": "BOTINA PRETA N°40 ELAST SOLA PU C.A 17015",
+    "category": "EPI",
+    "group": "seguranca",
+    "description": "Botina preta número 40 com elástico e sola PU para segurança no trabalho.",
+    "price": 59.80,
+    "image": "assets/img/products/botina.png",
+    "tags": [
+      "botina",
+      "epi",
+      "segurança",
+      "obra",
+      "calçado"
+    ]
+  },
+  {
+    "id": "escada-residencial-5-degraus-mor",
+    "name": "ESCADA RESIDENCIAL 5 DEG MOR",
+    "category": "Utilidades",
+    "group": "manutencao",
+    "description": "Escada residencial Mor com 5 degraus para uso doméstico e manutenção.",
+    "price": 199.90,
+    "image": "assets/img/products/escada-mor.png",
+    "tags": [
+      "escada",
+      "mor",
+      "5 degraus",
+      "manutenção",
+      "residencial"
+    ]
+  }
+]
