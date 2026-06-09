@@ -11,14 +11,31 @@ import CustomerModal from './components/CustomerModal.jsx';
 import BottomBar from './components/BottomBar.jsx';
 import ProductModal from './components/ProductModal.jsx';
 import { PROJEM_CONFIG as cfg } from './services/config.js';
-import { clearCustomer, getStoredCustomer, hasValidCustomer } from './services/customerService.js';
-import { getCartCount, openHelpWhatsapp, submitQuote } from './services/cartService.js';
-import { trackEvent } from './services/analyticsService.js';
+import { clearCustomer, getAttribution, getStoredCustomer, hasValidCustomer } from './services/customerService.js';
+import { getCartCount, getCartTotal, openHelpWhatsapp, submitQuote } from './services/cartService.js';
+import { buildProductEventPayload, trackEvent } from './services/analyticsService.js';
 import './styles.css';
 
 function loadCart() {
   try { return JSON.parse(localStorage.getItem(cfg.storageKeys.cart) || '[]'); }
   catch { return []; }
+}
+
+function buildCartEventPayload(cart = []) {
+  const items = cart.map(item => ({
+    item_id: item.id || '',
+    item_name: item.name || '',
+    item_category: item.category || item.group_title || item.group || '',
+    price: Number(item.price || 0),
+    quantity: Number(item.quantity || 1)
+  }));
+
+  return {
+    value: getCartTotal(cart),
+    currency: 'BRL',
+    items_count: getCartCount(cart),
+    items
+  };
 }
 
 export default function App() {
@@ -33,7 +50,28 @@ export default function App() {
   const products = useMemo(() => productsData.map(p => ({ ...p, image: p.image?.replace('assets/img/products/', 'assets/img/products/') })), []);
   const cartCount = getCartCount(cart);
 
-  useEffect(() => { trackEvent(cfg.events.pageView, { page_type: 'marketplace_quote' }); }, []);
+  useEffect(() => {
+    const attribution = getAttribution();
+    trackEvent(cfg.events.pageView, {
+      page_type: 'marketplace_quote',
+      page_title: document.title,
+      page_location: location.href,
+      page_path: location.pathname,
+      origem_evento: cfg.sourceEvent,
+      utm_source: attribution.utm_source || '',
+      utm_medium: attribution.utm_medium || '',
+      utm_campaign: attribution.utm_campaign || '',
+      utm_content: attribution.utm_content || '',
+      utm_term: attribution.utm_term || '',
+      gclid: attribution.gclid || '',
+      gbraid: attribution.gbraid || '',
+      wbraid: attribution.wbraid || '',
+      fbclid: attribution.fbclid || '',
+      fbp: attribution.fbp || '',
+      fbc: attribution.fbc || ''
+    });
+  }, []);
+
   useEffect(() => { localStorage.setItem(cfg.storageKeys.cart, JSON.stringify(cart)); }, [cart]);
   useEffect(() => {
     if (!toast) return;
@@ -48,13 +86,22 @@ export default function App() {
       return next;
     });
     setToast(`${product.name} adicionado à lista.`);
-    trackEvent(cfg.events.addToCart, { item_id: product.id, item_name: product.name, item_category: product.category, value: Number(product.price || 0), currency: 'BRL', quantity: 1 });
+    trackEvent(cfg.events.addToCart, buildProductEventPayload(product, 1));
   }
 
   function removeProduct(productId) {
     const item = cart.find(p => p.id === productId);
     setCart(prev => prev.filter(p => p.id !== productId));
-    if (item) trackEvent(cfg.events.removeFromCart, { item_id: item.id, item_name: item.name, item_category: item.category, value: Number(item.price || 0), currency: 'BRL', quantity: item.quantity });
+    if (item) {
+      trackEvent(cfg.events.removeFromCart, {
+        item_id: item.id,
+        item_name: item.name,
+        item_category: item.category || item.group_title || item.group || '',
+        value: Number(item.price || 0) * Number(item.quantity || 1),
+        currency: 'BRL',
+        quantity: item.quantity
+      });
+    }
   }
 
   function updateQty(productId, quantity) {
@@ -65,7 +112,10 @@ export default function App() {
   async function requestQuote() {
     if (!cart.length) { setToast('Adicione pelo menos um material.'); return; }
     const storedCustomer = getStoredCustomer();
-    trackEvent(cfg.events.beginCheckout, { items_count: cartCount, has_customer: Boolean(storedCustomer && hasValidCustomer(storedCustomer)) });
+    trackEvent(cfg.events.beginCheckout, {
+      ...buildCartEventPayload(cart),
+      has_customer: Boolean(storedCustomer && hasValidCustomer(storedCustomer))
+    });
     if (!hasValidCustomer(storedCustomer)) {
       clearCustomer();
       setCustomerOpen(true);
