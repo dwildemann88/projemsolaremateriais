@@ -29,7 +29,10 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
 
 fbq('set', 'autoConfig', false, '443736384897925');
 fbq('init', '443736384897925');
-fbq('track', 'PageView');
+if (!sessionStorage.getItem('projem_meta_pageview_sent')) {
+  fbq('track', 'PageView');
+  sessionStorage.setItem('projem_meta_pageview_sent', '1');
+}
 </script>
 <noscript>
 <img height="1" width="1" style="display:none"
