@@ -33,7 +33,6 @@ export default function App() {
   const products = useMemo(() => productsData.map(p => ({ ...p, image: p.image?.replace('assets/img/products/', 'assets/img/products/') })), []);
   const cartCount = getCartCount(cart);
 
-  useEffect(() => { trackEvent(cfg.events.pageView, { page_type: 'marketplace_quote' }); }, []);
   useEffect(() => { localStorage.setItem(cfg.storageKeys.cart, JSON.stringify(cart)); }, [cart]);
   useEffect(() => {
     if (!toast) return;
