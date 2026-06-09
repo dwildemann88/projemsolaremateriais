@@ -20,6 +20,7 @@ export const PROJEM_CONFIG = {
     completeRegistration: 'complete_registration',
     customerLogin: 'customer_login',
     quoteRequested: 'quote_requested',
-    whatsappQuoteClick: 'whatsapp_quote_click'
+    whatsappQuoteClick: 'whatsapp_quote_click',
+    helpWhatsappClick: 'help_whatsapp_click'
   }
 };

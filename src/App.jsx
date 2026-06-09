@@ -12,7 +12,7 @@ import BottomBar from './components/BottomBar.jsx';
 import ProductModal from './components/ProductModal.jsx';
 import { PROJEM_CONFIG as cfg } from './services/config.js';
 import { clearCustomer, getStoredCustomer, hasValidCustomer } from './services/customerService.js';
-import { getCartCount, openHelpWhatsapp, submitQuote } from './services/cartService.js';
+import { getCartCount, getCartTotal, openHelpWhatsapp, submitQuote } from './services/cartService.js';
 import { trackEvent } from './services/analyticsService.js';
 import './styles.css';
 
@@ -62,10 +62,26 @@ export default function App() {
     setCart(prev => prev.map(item => item.id === productId ? { ...item, quantity: Math.max(1, Number(quantity || 1)) } : item));
   }
 
+  function openProduct(product) {
+    setSelectedProduct(product);
+    trackEvent(cfg.events.viewItem, {
+      item_id: product.id,
+      item_name: product.name,
+      item_category: product.category,
+      value: Number(product.price || 0),
+      currency: 'BRL'
+    });
+  }
+
   async function requestQuote() {
     if (!cart.length) { setToast('Adicione pelo menos um material.'); return; }
     const storedCustomer = getStoredCustomer();
-    trackEvent(cfg.events.beginCheckout, { items_count: cartCount, has_customer: Boolean(storedCustomer && hasValidCustomer(storedCustomer)) });
+    trackEvent(cfg.events.beginCheckout, {
+      items_count: cartCount,
+      value: getCartTotal(cart),
+      currency: 'BRL',
+      has_customer: Boolean(storedCustomer && hasValidCustomer(storedCustomer))
+    });
     if (!hasValidCustomer(storedCustomer)) {
       clearCustomer();
       setCustomerOpen(true);
@@ -100,7 +116,7 @@ export default function App() {
             <article><strong>3</strong><h3>Envie pelo WhatsApp</h3><p>A equipe recebe sua lista e continua o atendimento.</p></article>
           </div>
         </section>
-        <ProductCatalog products={products} query={query} setQuery={setQuery} activeGroup={activeGroup} setActiveGroup={setActiveGroup} onAdd={addProduct} onHelp={openHelpWhatsapp} onOpenProduct={setSelectedProduct} />
+        <ProductCatalog products={products} query={query} setQuery={setQuery} activeGroup={activeGroup} setActiveGroup={setActiveGroup} onAdd={addProduct} onHelp={openHelpWhatsapp} onOpenProduct={openProduct} />
         <section className="privacy-note">
           <strong>Privacidade e LGPD</strong>
           <p>Os dados informados são usados para identificação do atendimento, envio do orçamento, contato comercial e melhoria da experiência. Recomenda-se publicar a política completa em uma rota separada, como <code>/privacidade</code>.</p>

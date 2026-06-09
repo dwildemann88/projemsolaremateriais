@@ -1,6 +1,6 @@
 import { PROJEM_CONFIG as cfg } from './config.js';
 import { onlyDigits, normalizeBRPhone, isValidCEP } from './validators.js';
-import { buildCustomerMatchPayload, trackEvent } from './analyticsService.js';
+import { buildCustomerMatchPayload, createEventId, trackEvent } from './analyticsService.js';
 
 const nowIso = () => new Date().toISOString();
 
@@ -253,32 +253,49 @@ export async function registerCustomer(rawCustomer) {
   const base = normalizeCustomer(rawCustomer);
   const payload = buildCustomerPayload(base);
   const match = await buildCustomerMatchPayload(base);
+  const registrationEventId = createEventId(cfg.events.generateLead);
+  const registrationEventTime = Math.floor(Date.now() / 1000);
+
   const makeResult = await callMake('register_customer', {
     ...payload,
     event_payload: {
       event_name: cfg.events.generateLead,
+      meta_event_name: 'CompleteRegistration',
+      google_event_name: cfg.events.generateLead,
+      event_id: registrationEventId,
+      event_time: registrationEventTime,
+      event_source_url: location.href,
       customer_id: base.customer_id,
       document_type: base.document_type,
       origem_evento: cfg.sourceEvent,
       origem_midia: base.origem_midia,
+      fbp: payload.fbp,
+      fbc: payload.fbc,
+      fbclid: payload.fbclid,
+      gclid: payload.gclid,
+      gbraid: payload.gbraid,
+      wbraid: payload.wbraid,
       ...match
     }
   });
+
   const returned = makeResult?.customer || makeResult?.data || {};
   const merged = normalizeCustomer({ ...base, ...returned, lead_id: returned.lead_id || makeResult?.lead_id || '' });
   if (!((makeResult?.registered === true || makeResult?.exists === true || makeResult?.success === true) && hasValidCustomer(merged))) {
     clearCustomer();
     throw new Error('O Make não confirmou o cadastro com lead_id. Não vou salvar cliente local nem abrir WhatsApp.');
   }
+
   const saved = saveCustomer(merged);
   trackEvent(cfg.events.generateLead, {
+    event_id: registrationEventId,
+    event_time: registrationEventTime,
     lead_id: saved.lead_id,
     customer_id: saved.customer_id,
     document_type: saved.document_type,
     method: 'customer_modal',
     origem_evento: cfg.sourceEvent,
-    origem_midia: saved.origem_midia,
-    ...match
+    origem_midia: saved.origem_midia
   });
   return saved;
 }
