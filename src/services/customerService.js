@@ -253,16 +253,10 @@ export async function registerCustomer(rawCustomer) {
   const base = normalizeCustomer(rawCustomer);
   const payload = buildCustomerPayload(base);
   const match = await buildCustomerMatchPayload(base);
-  const eventId = `register_${Date.now()}_${Math.random().toString(16).slice(2)}`;
   const makeResult = await callMake('register_customer', {
     ...payload,
     event_payload: {
       event_name: cfg.events.generateLead,
-      meta_event_name: 'CompleteRegistration',
-      google_event_name: cfg.events.generateLead,
-      event_id: eventId,
-      event_time: Math.floor(Date.now() / 1000),
-      conversion_date_time: base.data_lead,
       customer_id: base.customer_id,
       document_type: base.document_type,
       origem_evento: cfg.sourceEvent,
@@ -278,7 +272,6 @@ export async function registerCustomer(rawCustomer) {
   }
   const saved = saveCustomer(merged);
   trackEvent(cfg.events.generateLead, {
-    event_id: eventId,
     lead_id: saved.lead_id,
     customer_id: saved.customer_id,
     document_type: saved.document_type,

@@ -1,7 +1,5 @@
 import { Plus, Eye } from 'lucide-react';
 import { money } from '../services/cartService.js';
-import { PROJEM_CONFIG as cfg } from '../services/config.js';
-import { buildProductEventPayload, trackEvent } from '../services/analyticsService.js';
 
 export default function ProductCard({ product, onAdd, onOpen }) {
   const price = Number(product.price || 0);
@@ -11,15 +9,10 @@ export default function ProductCard({ product, onAdd, onOpen }) {
     onAdd(product);
   }
 
-  function handleOpen() {
-    trackEvent(cfg.events.viewItem, buildProductEventPayload(product, 1));
-    onOpen?.(product);
-  }
-
   function handleKeyDown(event) {
     if (event.key === 'Enter' || event.key === ' ') {
       event.preventDefault();
-      handleOpen();
+      onOpen?.(product);
     }
   }
 
@@ -28,7 +21,7 @@ export default function ProductCard({ product, onAdd, onOpen }) {
       className="product-card"
       role="button"
       tabIndex="0"
-      onClick={handleOpen}
+      onClick={() => onOpen?.(product)}
       onKeyDown={handleKeyDown}
       aria-label={`Ver detalhes de ${product.name}`}
     >

@@ -1,6 +1,6 @@
 import { PROJEM_CONFIG as cfg } from './config.js';
 import { normalizeCustomer, hasValidCustomer, clearCustomer, getAttribution, inferMediaOrigin, formatAddress } from './customerService.js';
-import { buildCustomerMatchPayload, trackEvent } from './analyticsService.js';
+import { trackEvent } from './analyticsService.js';
 
 export const money = value => Number(value || 0).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 const nowIso = () => new Date().toISOString();
@@ -118,27 +118,6 @@ export async function submitQuote(customer, cart = []) {
   }
   const payload = buildQuotePayload(customer, cart);
   if (!payload.lead_id) throw new Error('Orçamento bloqueado: lead_id ausente.');
-
-  const match = await buildCustomerMatchPayload(customer);
-  const quoteEventId = `quote_${payload.orcamento_id}`;
-  const whatsappEventId = `whatsapp_${payload.orcamento_id}`;
-  payload.event_payload = {
-    event_name: cfg.events.quoteRequested,
-    meta_event_name: 'Lead',
-    google_event_name: cfg.events.quoteRequested,
-    event_id: quoteEventId,
-    event_time: Math.floor(Date.now() / 1000),
-    conversion_date_time: payload.data_orcamento,
-    lead_id: payload.lead_id,
-    customer_id: payload.customer_id,
-    value: payload.valor_estimado,
-    currency: 'BRL',
-    items_count: payload.quantidade_itens,
-    origem_evento: payload.origem_evento,
-    origem_midia: payload.origem_midia,
-    ...match
-  };
-
   const url = cfg.makeWebhookUrl;
   if (url && url !== 'COLE_AQUI_O_WEBHOOK_DO_MAKE') {
     const response = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
@@ -147,7 +126,6 @@ export async function submitQuote(customer, cart = []) {
     if (!response.ok || result?.success === false) throw new Error(result?.message || 'Não foi possível registrar o orçamento no Make.');
   }
   trackEvent(cfg.events.quoteRequested, {
-    event_id: quoteEventId,
     lead_id: payload.lead_id,
     customer_id: payload.customer_id,
     value: payload.valor_estimado,
@@ -159,7 +137,6 @@ export async function submitQuote(customer, cart = []) {
   const text = encodeURIComponent(buildQuoteText(normalizeCustomer(customer || {}), cart));
   const whatsappUrl = `https://wa.me/${cfg.whatsappNumber}?text=${text}`;
   trackEvent(cfg.events.whatsappQuoteClick, {
-    event_id: whatsappEventId,
     lead_id: payload.lead_id,
     customer_id: payload.customer_id,
     value: payload.valor_estimado,
