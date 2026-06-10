@@ -29,14 +29,17 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
 
 fbq('set', 'autoConfig', false, '443736384897925');
 fbq('init', '443736384897925');
-fbq('track', 'PageView');
+if (!sessionStorage.getItem('projem_meta_pageview_sent')) {
+  fbq('track', 'PageView');
+  sessionStorage.setItem('projem_meta_pageview_sent', '1');
+}
 </script>
 <noscript>
 <img height="1" width="1" style="display:none"
 src="https://www.facebook.com/tr?id=443736384897925&ev=PageView&noscript=1"/>
 </noscript>
 <!-- End Meta Pixel Code -->
-    <script type="module" crossorigin src="/assets/index-DV_W4dIp.js"></script>
+    <script type="module" crossorigin src="/assets/index-DN4T3qpE.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-BQMYbHzC.css">
   </head>
   <body>

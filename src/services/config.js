@@ -1,6 +1,6 @@
 export const PROJEM_CONFIG = {
   makeWebhookUrl: 'https://hook.us2.make.com/7bpxb6ucj9tmc3aqotnnejftz9nnc9an',
-  whatsappNumber: '5555999999999',
+  whatsappNumber: '55559145022',
   companyName: 'Projem Materiais',
   schemaVersion: 'orcamento_lead_v3',
   sourceSystem: 'catalogo_orcamento_projem',
